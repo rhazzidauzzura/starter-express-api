@@ -44,7 +44,13 @@ class reportController {
   static async getReportById(req, res, next) {
     try {
       const { reportId } = req.params;
-      const reportById = await Report.findOne({ where: { id: reportId } });
+      const reportById = await Report.findOne({
+        where: { id: reportId },
+        include: {
+          model: User,
+          attributes: ["email"],
+        },
+      });
       if (!reportById) {
         return res.status(404).json({ message: `Report Not Found` });
       }
