@@ -1,10 +1,12 @@
 const { sendFile } = require("../helpers/cloudinary");
-const { Report } = require("../models");
+const { Report, User } = require("../models");
 
 class reportController {
   static async getReport(req, res, next) {
     try {
       let reports = await Report.findAll({
+        include: User,
+        attributes: { exclude: ["password"] },
         order: [["createdAt", "asc"]],
       });
       res.status(200).json(reports);
