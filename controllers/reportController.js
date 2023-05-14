@@ -27,9 +27,9 @@ class reportController {
       if (file) {
         const result = await sendFile(file);
         const photo = result.secure_url;
-        const report = await Report.create({ name, age, message, long, lat, phoneNumber, photo: photo, UserId: id });
+        const report = await Report.create({ name, message, long, lat, phoneNumber, photo: photo, UserId: id });
       } else {
-        const report = await Report.create({ name, age, message, long, lat, phoneNumber, photo: "", UserId: id });
+        const report = await Report.create({ name, message, long, lat, phoneNumber, photo: "", UserId: id });
       }
 
       res.status(201).json({ message: "Report Sent Successfully" });
