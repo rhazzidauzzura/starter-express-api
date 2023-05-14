@@ -18,7 +18,7 @@ module.exports = {
         allowNull: false,
       },
       phoneNumber: {
-        type: Sequelize.STRINg,
+        type: Sequelize.STRING,
         allowNull: false,
       },
       long: {
