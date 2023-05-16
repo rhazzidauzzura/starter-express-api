@@ -7,7 +7,7 @@ class reportController {
       let reports = await Report.findAll({
         include: {
           model: User,
-          attributes: ["email"],
+          attributes: ["email", "NIK", "address"],
         },
         order: [["createdAt", "asc"]],
       });
